@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Salted Caramel</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+
+<body>
+
+<div class="frame">
+    <div class="bubbles">
+        <span class="bubble b1"></span>
+        <span class="bubble b2"></span>
+        <span class="bubble b3"></span>
+        <span class="bubble b4"></span>
+        <span class="bubble b5"></span>
+        <span class="bubble b6"></span>
+        <span class="bubble b7"></span>
+        <span class="bubble b8"></span>
+        <span class="bubble b9"></span>
+        <span class="bubble b10"></span>
+    </div>
+    <div class="body" onclick="finish()">
+        <span class="eye"></span>
+        <span class="mouth"></span>
+        <span class="dorsal"></span>
+        <span class="caudal"></span>
+    </div>
+</div>
+
+<!-- Audio with Story -->
+<audio id="soundFile" src="/data/salted-caramel.m4a"></audio>
+
+<script type="text/javascript">
+
+// Audio
+
+var contextClass = (window.AudioContext || window.webkitAudioContext);
+var audioBuffer; // we will pass sound into audioBuffer
+var analyser;    // for analyser node
+var frequencyData = new Uint8Array(1024);
+
+if (contextClass) {
+
+  // Web Audio API is available.
+  var audioContext = new contextClass();
+  console.warn('Web Audio API is available');
+
+} else {
+
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+
+}
+
+// load audio file from html tag
+var audioElement = document.getElementById('soundFile');
+
+// create source node
+var source = audioContext.createMediaElementSource(audioElement);
+
+function createAnalyser() {
+  analyser = audioContext.createAnalyser();
+  analyser.fftSize = 2048; // how many bits we analyse on
+}
+
+function connectAnalyser(source) {
+  source.connect(analyser);
+  analyser.connect(audioContext.destination); // pipe to speakers
+}
+
+function playSound() {
+  createAnalyser();   //passing in file
+  connectAnalyser(source);
+
+  //start playing
+  audioElement.play();
+}
+
+function audioIsPlaying(audioElement) {
+  console.log(audioElement.paused);
+  return audioElement.paused;
+}
+
+function playButton(){
+  if (audioIsPlaying(audioElement)) {
+    playSound();
+    update();
+  } else {
+    audioElement.pause();
+    document.location = "ending.html"
+  }
+}
+
+function update() {
+    requestAnimationFrame(update);
+    //constantly getting feedback from data
+    analyser.getByteFrequencyData(frequencyData);
+
+    // Animation stuff--------------------------------
+    var lights = document.getElementsByClassName("bubble")
+    var totalLights = lights.length;
+
+    for (var i=0; i<totalLights; i++) {
+
+    //set light colours
+    var lightColour = i*30;
+    lights[i].style.backgroundColor = 'hsla('+lightColour+',  80%, 50%, 0.8)';
+    lights[i].style.borderColor = 'hsla('+lightColour+',  80%, 50%, 1)';
+  
+    //flash on frequency
+    var freqDataKey = i*6;
+    if (frequencyData[freqDataKey] > 100){
+        lights[i].style.opacity = "1";
+    } else {
+        lights[i].style.opacity = "0.2";
+    }
+  }
+};
+
+function finish() {
+    document.location = "ending.html"
+};
+
+// Go fish, go!
+(function() {
+  playButton();
+})();
+
+</script>
+
+</html>

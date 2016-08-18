@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Salted Caramel</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<style>
+
+/* Typed text */
+#hello{position:absolute;top:300px; left:50%; z-index:2000;font-size:90px;color:#666;cursor: pointer;}
+#details{position:absolute;top:390px; left:50%; z-index:2000;font-size:30px;color:#999;cursor: pointer;}
+
+/* Change color of text on mouseover */
+#hello:hover {
+  color: #c5e8ec;
+}
+
+#details:hover {
+  color: #E27B30;
+}
+
+body {
+  font-family: 'Indie Flower', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+</style>
+</head>
+
+<body>
+
+<body>
+
+<div id="hello"></div>
+<div id="details"></div>
+<div class="frame">
+    <div class="bubbles">
+        <span class="bubble b1"></span>
+        <span class="bubble b2"></span>
+        <span class="bubble b3"></span>
+        <span class="bubble b4"></span>
+        <span class="bubble b5"></span>
+    </div>
+</div>
+
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/typed.min.js"></script>
+<script>
+  $(function(){
+      $("#hello").typed({
+        strings: ["^1000 Salted Caramel"],
+        typeSpeed: 10,
+        showCursor: false
+      });
+      $("#details").typed({
+        strings: ["^3000 ...for a fantastic fish!"],
+        typeSpeed: 0,
+        showCursor: false
+      });
+
+      // Show the fish!
+      $("#hello").click(function(){  
+          document.location = "fish.html";
+      });
+
+      // Show the fish!
+      $("#details").click(function(){  
+          document.location = "fish.html";
+      });
+
+  });
+</script>
+</body>
+</html>

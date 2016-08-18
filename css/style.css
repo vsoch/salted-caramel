@@ -1,0 +1,242 @@
+body{
+  background: #1d2227;/*#c5e8ec;*/
+}
+
+audio { 
+   display:none;
+}
+
+.frame {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  margin: 50px auto;
+}
+/** bubbles **/
+.bubbles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.bubble {
+    height: 50px;
+    width: 50px;
+    display: block;
+    background: rgb(231, 253, 255);
+    border-radius: 50%;
+    left: 0px;
+    position: absolute;
+}
+.bubble.b1{
+    animation: bubbles 5s linear infinite;
+    transform: scale(0.9);
+    opacity: 0.5;
+}
+.bubble.b2 {
+    top: 5%;
+    animation: bubbles 25s linear infinite;
+    transform: scale(0.5);
+    opacity: 0.3;
+}
+.bubble.b3 {
+    top: 10%;
+    animation: bubbles 45s linear infinite;
+    transform: scale(0.7);
+    opacity: 0.5;
+}
+
+.bubble.b4 {
+    top: 15%;
+    animation: bubbles 10s linear infinite;
+    transform: scale(0.9);
+    opacity: 0.2;
+}
+
+.bubble.b5 {
+    top: 20%;
+    animation: bubbles 50s linear infinite;
+    transform: scale(0.7);
+    opacity: 0.4;
+}
+
+.bubble.b6 {
+    top: 25%;
+    animation: bubbles 20s linear infinite;
+    transform: scale(0.8);
+    opacity: 0.7;
+}
+
+.bubble.b7 {
+    top: 30%;
+    animation: bubbles 15s linear infinite;
+    transform: scale(0.3);
+    opacity: 0.6;
+}
+
+.bubble.b8 {
+    top: 35%;
+    animation: bubbles 10s linear infinite;
+    transform: scale(0.5);
+    opacity: 0.9;
+}
+
+.bubble.b9 {
+    top: 40%;
+    animation: bubbles 50s linear infinite;
+    transform: scale(0.4);
+    opacity: 0.8;
+}
+
+.bubble.b10 {
+    top: 55%;
+    animation: bubbles 45s linear infinite;
+    transform: scale(0.2);
+    opacity: 0.3;
+}
+
+/** fish **/
+.body {
+  cursor: pointer;
+  position: absolute;
+  background: #c5e8ec/*#2421228*/;
+  height: 200px;
+  width: 250px;
+  -moz-border-radius:50% 60% 50% 50% / 60% 60% 50% 50%;
+  -webkit-border-radius: 50% 60% 50% 50% / 60% 60% 50% 50%;
+  border-radius: 50% 60% 50% 50% / 60% 60% 50% 50%;
+  animation: diving 5s linear infinite alternate;
+}
+.eye {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background: #fff;
+    border-radius: 50%;
+    top: 0px;
+    bottom: 15%;
+    margin: auto;
+    left: 10%;
+}
+.eye:after {
+    height: 20px;
+    width: 20px;
+    background: #242122;
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.mouth {
+    border-right: 20px solid rgba(255, 0, 0, 0);
+    border-top: 0px solid rgba(0, 0, 0, 0);
+    border-bottom: 10px solid #242112;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+    animation: mouth 2s linear infinite;
+}
+.dorsal {
+    height: 220px;
+    width: 70px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: -15px 0px 0 0px #c5e8ec/*#242122*/;
+    animation: dorsal 1s ease infinite alternate;
+}
+.dorsal:before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 60px;
+    background: #c5e8ec/*#242122*/;
+    border-radius: 60% / 60%;
+    left: 3px;
+    top: 0;
+}
+.dorsal:after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 60px;
+    background: #c5e8ec/*#242122*/;
+    border-radius: 60% / 60%;
+    left: 75px;
+    bottom: 10px;
+  
+}
+.caudal {
+    height: 60px;
+    width: 70px;
+    position: absolute;
+    right: -78px;
+    top: 5px;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: -15px 0px 0 0px #c5e8ec/*#242122*/;
+    animation: caudal 1s ease infinite alternate;
+    transform-origin: left;
+}
+
+@keyframes diving {
+  0%, 100% {
+    margin-top:50px;
+    transform: rotate(0deg);
+  }
+  50% {
+    margin-top: 200px;
+    transform: rotate(-3deg);
+  }
+}
+@keyframes bubbles {
+  0% {
+    margin-top:0;
+    margin-left: 0%;
+  }
+  50% {
+   margin-top: 30px;
+   margin-left: 50%;
+  }
+  100%{
+    margin-top:50px;
+    margin-left: 100%; 
+  }
+}
+@keyframes mouth {
+  0%,100% {
+    border-bottom-width: 10px;
+  }
+  50% {
+    border-bottom-width: 0;
+  }
+}
+@keyframes caudal {
+  from {
+    transform: rotateY(5deg);
+  }
+  to {
+    transform: rotateY(35deg);
+  }
+}
+@keyframes dorsal {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(15deg);
+  }
+}

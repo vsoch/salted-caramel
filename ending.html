@@ -1,0 +1,46 @@
+<html>
+<head>
+<style>
+
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+</style>
+</head>
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/electron.js"></script>
+<script>
+
+(function() {
+
+    shape.init();
+    shape.print('salted caramel');
+
+    // Clear text
+    setTimeout(function(){ 
+        shape.clear();
+    }, 3000);
+
+    // Galaxy
+    setTimeout(function(){ 
+        document.location = "https://github.com/vsoch/salted-caramel";
+    }, 5000);
+
+})();
+
+</script>
+
+</body>
+</html>
