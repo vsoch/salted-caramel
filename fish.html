@@ -119,8 +119,13 @@ function update() {
   }
 };
 
+function OpenInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 function finish() {
-    document.location = "ending.html"
+    OpenInNewTab("ending.html");
 };
 
 // Go fish, go!
